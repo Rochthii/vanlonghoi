@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DragonDoc AI — Your Intelligent Knowledge Guardian | Vân Long Hội (雲龍會)</title>
+  <meta name="description" content="DragonDoc AI biến hàng ngàn trang tài liệu tĩnh (PDF, DOCX, PPTX) thành kho trí tuệ sống. Bảo vệ bởi kiến trúc AI bảo mật cao cấp từ Vân Long Hội.">
+  <meta name="keywords" content="DragonDoc AI, AI Knowledge Management, Document AI, RAG Platform, Enterprise AI, Vân Long Hội">
+  
+  <!-- Favicon & Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600;700;800;900&family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/design-system.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+
+  <!-- Background Canvas Animation -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- Navigation -->
+  <nav class="nav" id="main-nav">
+    <div class="container nav-inner">
+      <a href="#" class="nav-logo" id="nav-brand-logo">
+        <div class="nav-logo-icon">
+          <img src="assets/logo.jpg" alt="DragonDoc AI Logo" class="nav-logo-img">
+        </div>
+        <div class="nav-logo-text">DRAGONDOC <span>AI</span></div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#problem" class="nav-link-underline">Vấn đề</a></li>
+        <li><a href="#solution" class="nav-link-underline">Giải pháp</a></li>
+        <li><a href="#demo" class="nav-link-underline">Demo Interactive</a></li>
+        <li><a href="#features" class="nav-link-underline">Tính năng</a></li>
+        <li><a href="#architecture" class="nav-link-underline">Kiến trúc AI</a></li>
+        <li><a href="#use-cases" class="nav-link-underline">Ứng dụng</a></li>
+        <li><a href="#pricing" class="nav-link-underline">Bảng giá</a></li>
+        <li><a href="#faq" class="nav-link-underline">FAQ</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <div class="nav-parent-badge">
+          <span>雲龍會</span> Parent Brand
+        </div>
+        <a href="#pricing" class="btn btn-primary" id="nav-cta-btn">Vào Workspace</a>
+      </div>
+
+      <div class="nav-hamburger" id="nav-toggle">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu Dropdown -->
+  <div id="mobile-menu" style="display:none; position:fixed; top:72px; left:0; right:0; background:rgba(11,15,26,0.95); backdrop-filter:blur(20px); border-bottom:1px solid rgba(0,229,255,0.1); padding:20px; z-index:999; flex-direction:column; gap:16px;">
+    <a href="#problem" style="color:var(--text-primary);">Vấn đề</a>
+    <a href="#solution" style="color:var(--text-primary);">Giải pháp</a>
+    <a href="#demo" style="color:var(--text-primary);">Demo Interactive</a>
+    <a href="#features" style="color:var(--text-primary);">Tính năng</a>
+    <a href="#architecture" style="color:var(--text-primary);">Kiến trúc AI</a>
+    <a href="#pricing" style="color:var(--text-primary);">Bảng giá</a>
+    <a href="#pricing" class="btn btn-primary" style="width:100%;">Vào Workspace</a>
+  </div>
+
+  <main>
+    <!-- SECTION 1: HERO SECTION -->
+    <section class="hero" id="hero">
+      <div class="hero-bg">
+        <div class="hero-radial"></div>
+        <div class="hero-grid"></div>
+      </div>
+
+      <div class="container hero-content">
+        <div class="hero-kicker">
+          <div class="hero-kicker-line"></div>
+          <span class="badge badge-dragon">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:4px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Next-Gen Knowledge Guardian
+          </span>
+          <div class="hero-kicker-line"></div>
+        </div>
+
+        <h1 class="hero-h1">
+          Biến hàng ngàn trang tài liệu tĩnh
+          <span class="line-accent">thành Trí Tuệ Sống tức thì</span>
+        </h1>
+
+        <p class="hero-sub">
+          <strong>DragonDoc AI</strong> bảo vệ và kích hoạt tri thức doanh nghiệp. Hỏi đáp, tổng hợp, trích dẫn nguồn chính xác từng dòng từ <span id="hero-typing" style="color:var(--clr-dragon-cyan); font-weight:600;"></span><span class="typing-cursor"></span>
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#demo" class="btn btn-primary btn--lg" id="hero-primary-cta">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            <span>Thử nghiệm Demo Tức thì</span>
+          </a>
+          <a href="#architecture" class="btn btn-secondary btn--lg" id="hero-secondary-cta">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>Khám phá Bảo mật RAG</span>
+          </a>
+        </div>
+        <div class="hero-cta-note">✓ Không cần thẻ tín dụng &nbsp;•&nbsp; ✓ Mã hóa End-to-End Enterprise &nbsp;•&nbsp; ✓ Trích dẫn chính xác 100%</div>
+
+        <!-- Hero Stats -->
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-number" data-count="99" data-suffix=".9%">0%</div>
+            <div class="hero-stat-label">Độ chính xác RAG</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-number" data-count="350" data-suffix="ms">0ms</div>
+            <div class="hero-stat-label">Tốc độ truy xuất Sét</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-number" data-count="10000" data-suffix="+">0+</div>
+            <div class="hero-stat-label">Trang tài liệu/phút</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-number" data-count="0" data-suffix=" Data Leak">0</div>
+            <div class="hero-stat-label">Bảo mật tuyệt đối</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="glow-divider"></div>
+
+    <!-- SECTION 2: PROBLEM SECTION -->
+    <section class="section" id="problem">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div class="section-overline">
+            <span class="badge badge-violet">Thách thức tri thức</span>
+          </div>
+          <h2>Tài liệu của bạn đang là "Nghĩa địa Trí Tuệ"?</h2>
+          <p>Hàng ngàn file PDF, hợp đồng, quy chế bị lãng quên trong thư mục. Nhân sự mất hàng giờ tìm kiếm thông tin mỗi ngày.</p>
+        </div>
+
+        <div class="problem-grid">
+          <div class="problem-card reveal reveal--delay-1">
+            <div class="icon-box icon-box--violet" style="margin-bottom:16px;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <h3 class="problem-title">Mất 2.5 giờ/ngày chỉ để tìm file</h3>
+            <p class="problem-desc">Nhân viên và sinh viên tiêu tốn hàng trăm giờ lật tìm trong các file PDF 500 trang để kiếm một câu trả lời đơn giản.</p>
+          </div>
+
+          <div class="problem-card reveal reveal--delay-2">
+            <div class="icon-box icon-box--cyan" style="margin-bottom:16px;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+            </div>
+            <h3 class="problem-title">Chatbot thông thường bị "Ảo giác"</h3>
+            <p class="problem-desc">ChatGPT công cộng tự bịa ra câu trả lời khi không có dữ liệu nội bộ, gây hậu quả pháp lý và sai sót học thuật nghiêm trọng.</p>
+          </div>
+
+          <div class="problem-card reveal reveal--delay-3">
+            <div class="icon-box icon-box--blue" style="margin-bottom:16px;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>
+            </div>
+            <h3 class="problem-title">Nỗi sợ rò rỉ dữ liệu Doanh nghiệp</h3>
+            <p class="problem-desc">Tải tài liệu nhạy cảm lên AI công cộng đồng nghĩa với việc đưa bí mật kinh doanh vào dữ liệu huấn luyện của bên thứ ba.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: SOLUTION SECTION -->
+    <section class="section" id="solution" style="background: rgba(15,21,37,0.4);">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div class="section-overline">
+            <span class="badge badge-dragon">Giải pháp Vân Long Hội</span>
+          </div>
+          <h2>DragonDoc AI — Vệ sĩ Tri Thức Thông Minh</h2>
+          <p>Triết lý hình tượng Rồng Trắng Canh Giữ Kho Báu: Kết hợp sức mạnh truy xuất sét đánh với lớp giáp bảo mật dữ liệu tuyệt đối.</p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card reveal reveal--delay-1">
+            <div class="icon-box icon-box--cyan">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h3 class="feature-title">Vệ Sĩ Bảo Vệ (Guardian)</h3>
+            <p class="feature-desc">Mọi tài liệu được mã hóa phân vùng RBAC (Role-Based Access Control). Không bao giờ sử dụng dữ liệu riêng của bạn để train mô hình công cộng.</p>
+          </div>
+
+          <div class="card reveal reveal--delay-2">
+            <div class="icon-box icon-box--blue">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </div>
+            <h3 class="feature-title">Tốc Độ Sét (Lightning RAG)</h3>
+            <p class="feature-desc">Kiến trúc Hybrid Vector + Sparse Retrieval tìm kiếm ngữ nghĩa cực nhanh (sub-second), quét chính xác tới từng số trang và đoạn văn gốc.</p>
+          </div>
+
+          <div class="card reveal reveal--delay-3">
+            <div class="icon-box icon-box--violet">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+            </div>
+            <h3 class="feature-title">Bộ Nhớ Tập Thể (Collective Memory)</h3>
+            <p class="feature-desc">Xây dựng Knowledge Graph liên kết đa tài liệu. Nhận biết xung đột giữa các quy trình, chính sách cũ và mới trong toàn tổ chức.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: PRODUCT DEMO SECTION -->
+    <section class="section" id="demo">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div class="section-overline">
+            <span class="badge badge-dragon">Trải nghiệm Thực tế</span>
+          </div>
+          <h2>Trải nghiệm Giao diện AI Knowledge Guardian</h2>
+          <p>Xem cách DragonDoc AI xử lý tài liệu Đại học và Doanh nghiệp với trích dẫn nguồn chuẩn xác 100%.</p>
+        </div>
+
+        <div class="demo-window reveal" id="demo-window-container">
+          <div class="demo-titlebar">
+            <div class="demo-dots">
+              <div class="demo-dot"></div>
+              <div class="demo-dot"></div>
+              <div class="demo-dot"></div>
+            </div>
+            <div class="demo-titlebar-url">🔒 dragondoc.vanlonghoi.ai/workspace/university-knowledge-base</div>
+            <span class="badge badge-dragon" style="font-size:0.65rem;">LIVE RAG PIPELINE</span>
+          </div>
+
+          <div class="demo-body">
+            <!-- Sidebar -->
+            <div class="demo-sidebar">
+              <div class="demo-sidebar-title">KHO TÀI LIỆU (4 FILES)</div>
+              <div id="demo-doc-list">
+                <!-- Loaded via demo.js -->
+              </div>
+
+              <div style="margin-top:auto; padding-top:16px; border-top:1px solid rgba(0,229,255,0.06);">
+                <div style="font-size:0.75rem; color:var(--text-muted); margin-bottom:8px;">BẢO MẬT WORKSPACE</div>
+                <div style="font-size:0.75rem; color:var(--clr-dragon-cyan); display:flex; align-items:center; gap:6px;">
+                  <span class="glow-dot"></span> MinIO Air-Gapped Vault
+                </div>
+              </div>
+            </div>
+
+            <!-- Main Chat Area -->
+            <div class="flex flex-col" style="flex:1;">
+              <div class="demo-chat" id="demo-chat-messages">
+                <!-- Chat messages loaded via demo.js -->
+              </div>
+
+              <div class="demo-input-bar">
+                <input type="text" class="demo-input" id="demo-chat-input" placeholder="Hỏi bất kỳ điều gì về Quy chế học vụ, Đề cương môn học..." readonly value="Sinh viên có được phép thi lại không nếu điểm dưới 5?">
+                <button class="demo-send-btn" id="demo-send-trigger">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: FEATURES SECTION -->
+    <section class="section" id="features">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div class="section-overline">
+            <span class="badge badge-violet">Tính năng Cốt lõi</span>
+          </div>
+          <h2>Hệ sinh thái Tính năng Đột phá</h2>
+          <p>Thiết kế dành cho Đại học, Doanh nghiệp SMEs và Chuyên gia Tri thức chuyên sâu.</p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card reveal reveal--delay-1">
+            <div class="icon-box icon-box--cyan">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+            </div>
+            <h3 class="feature-title">Trích dẫn Nguồn Chính Xác (Source Citation)</h3>
+            <p class="feature-desc">Mọi câu trả lời của DragonDoc AI đều đi kèm liên kết tới chính xác trang, dòng và file văn bản gốc. Click để xem lại trực tiếp trên tài liệu gốc.</p>
+          </div>
+
+          <div class="feature-card reveal reveal--delay-2">
+            <div class="icon-box icon-box--blue">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+            </div>
+            <h3 class="feature-title">Bản đồ Tri thức (Knowledge Graph)</h3>
+            <p class="feature-desc">Không chỉ tìm kiếm độc lập. AI tự động kết nối các khái niệm liên quan giữa tài liệu của phòng Nhân sự, Pháp chế và Kỹ thuật.</p>
+          </div>
+
+          <div class="feature-card reveal reveal--delay-3">
+            <div class="icon-box icon-box--violet">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            </div>
+            <h3 class="feature-title">Trợ lý Gia sư AI (AI Tutor Engine)</h3>
+            <p class="feature-desc">Tự động tạo câu hỏi trắc nghiệm, tóm tắt chương sách, và lập sơ đồ tư duy hỗ trợ sinh viên và nhà nghiên cứu học tập hiệu quả.</p>
+          </div>
+
+          <div class="feature-card reveal reveal--delay-1">
+            <div class="icon-box icon-box--blue">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+            <h3 class="feature-title">So sánh Đa Tài Liệu (Document Comparison)</h3>
+            <p class="feature-desc">Tải lên 2 phiên bản hợp đồng hoặc 2 đề án kinh doanh. AI tự động chỉ ra các điểm khác biệt, mâu thuẫn và rủi ro tiềm ẩn.</p>
+          </div>
+
+          <div class="feature-card reveal reveal--delay-2">
+            <div class="icon-box icon-box--violet">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+            <h3 class="feature-title">Phân quyền Doanh nghiệp (Workspace RBAC)</h3>
+            <p class="feature-desc">Quản lý quyền truy cập chi tiết theo vai trò. Nhân viên chỉ xem được tri thức của phòng ban mình, Admin nắm toàn bộ hệ thống.</p>
+          </div>
+
+          <div class="feature-card reveal reveal--delay-3">
+            <div class="icon-box icon-box--cyan">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <h3 class="feature-title">API Integration & Webhooks</h3>
+            <p class="feature-desc">Tích hợp DragonDoc AI thẳng vào Slack, Microsoft Teams, Portal Đại học hoặc CRM Doanh nghiệp thông qua Developer API mạnh mẽ.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: AI ARCHITECTURE SECTION -->
+    <section class="section" id="architecture" style="background: rgba(6,8,16,0.8);">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div class="section-overline">
+            <span class="badge badge-dragon">Production-Grade Architecture</span>
+          </div>
+          <h2>Kiến trúc AI Bảo mật & Tốc độ Cao</h2>
+          <p>Hệ thống không dùng logic demo. Tất cả đều là hạ tầng Production xử lý song song với độ trễ cực thấp.</p>
+        </div>
+
+        <div class="arch-diagram reveal">
+          <div class="arch-layer-label">CLIENT LAYER & SECURITY GATEWAY</div>
+          <div class="arch-layer">
+            <div class="arch-node arch-node--frontend">Next.js 14 Frontend</div>
+            <div class="arch-node arch-node--frontend">Clerk / Auth0 OAuth2</div>
+            <div class="arch-node arch-node--frontend">Cloudflare WAF</div>
+          </div>
+
+          <div class="arch-layer-label">APPLICATION & INGESTION PIPELINE</div>
+          <div class="arch-layer">
+            <div class="arch-node arch-node--backend">FastAPI Backend Engine</div>
+            <div class="arch-node arch-node--backend">Unstructured Parser (PDF/DOCX)</div>
+            <div class="arch-node arch-node--backend">Celery Task Queue</div>
+          </div>
+
+          <div class="arch-layer-label">HYBRID RETRIEVAL & VECTOR DATABASE</div>
+          <div class="arch-layer">
+            <div class="arch-node arch-node--storage">Qdrant / Milvus Vector Store</div>
+            <div class="arch-node arch-node--storage">Neo4j Knowledge Graph</div>
+            <div class="arch-node arch-node--storage">PostgreSQL Metadata</div>
+          </div>
+
+          <div class="arch-layer-label">INTELLIGENCE & REASONING LAYER</div>
+          <div class="arch-layer">
+            <div class="arch-node arch-node--ai">Claude 3.5 / GPT-4o API</div>
+            <div class="arch-node arch-node--ai">Air-Gapped Local Llama 3 (Enterprise)</div>
+            <div class="arch-node arch-node--ai">Cohere Rerank v3</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7: USE CASES SECTION -->
+    <section class="section" id="use-cases">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div class="section-overline">
+            <span class="badge badge-blue">Trường hợp Sử dụng</span>
+          </div>
+          <h2>Tối ưu hóa cho Từng Đối tượng</h2>
+          <p>DragonDoc AI linh hoạt phục vụ từ môi trường học thuật đến các tổ chức doanh nghiệp lớn.</p>
+        </div>
+
+        <div class="usecase-tabs reveal">
+          <button class="usecase-tab active" data-tab="university">Trường Đại Học</button>
+          <button class="usecase-tab" data-tab="sme">Doanh Nghiệp SMEs</button>
+          <button class="usecase-tab" data-tab="worker">Knowledge Workers</button>
+        </div>
+
+        <!-- Tab 1: University -->
+        <div class="usecase-content active" data-tab="university">
+          <div>
+            <span class="badge badge-dragon" style="margin-bottom:16px;">ĐẠI HỌC & VIỆN NGHIÊN CỨU</span>
+            <h3 style="font-family:var(--font-display); font-size:var(--text-xl); font-weight:700; color:var(--text-primary); margin-bottom:16px;">Giải đáp Quy chế Học vụ & Hỗ trợ Nghiên cứu Khoa học</h3>
+            <p style="color:var(--text-secondary); margin-bottom:24px; line-height:1.8;">
+              Giảng viên và sinh viên chỉ cần tải lên sổ tay sinh viên, đề cương môn học và hàng ngàn bài báo khoa học. AI trở thành trợ lý tư vấn học vụ 24/7, giảm 90% áp lực cho phòng đào tạo.
+            </p>
+            <ul class="pricing-features">
+              <li><span class="check">✓</span> Trả lời thắc mắc học phí, quy chế thi, đăng ký tín chỉ</li>
+              <li><span class="check">✓</span> Phân tích & tóm tắt hàng trăm bài báo IEEE/Nature trong vài giây</li>
+              <li><span class="check">✓</span> Tích hợp trực tiếp vào hệ thống LMS / Portal trường</li>
+            </ul>
+          </div>
+          <div class="usecase-scenario">
+            <div style="padding:24px; background:var(--clr-obsidian-light); border-bottom:1px solid var(--clr-obsidian-edge); font-family:var(--font-mono); font-size:var(--text-xs); color:var(--clr-dragon-cyan);">
+              UNIVERSITY_KNOWLEDGE_CASE.JSON
+            </div>
+            <div style="padding:24px; font-size:var(--text-sm); color:var(--text-secondary); line-height:1.8;">
+              <strong style="color:var(--text-primary);">Tài liệu đầu vào:</strong> 120 PDF Sổ tay sinh viên + Quy chế 2026<br>
+              <strong style="color:var(--text-primary);">Số lượt hỏi đáp/tháng:</strong> 45,000 queries<br>
+              <strong style="color:var(--text-primary);">Thời gian tiết kiệm:</strong> ~1,200 giờ tư vấn trực tiếp
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 2: SME -->
+        <div class="usecase-content" data-tab="sme">
+          <div>
+            <span class="badge badge-violet" style="margin-bottom:16px;">DOANH NGHIỆP SMES & STARTUPS</span>
+            <h3 style="font-family:var(--font-display); font-size:var(--text-xl); font-weight:700; color:var(--text-primary); margin-bottom:16px;">Onboarding Nhân viên & Quản trị Tri thức Nội bộ</h3>
+            <p style="color:var(--text-secondary); margin-bottom:24px; line-height:1.8;">
+              Biến toàn bộ tài liệu HR, SOP quy trình làm việc và tài liệu kỹ thuật thành bộ nhớ trung tâm. Nhân viên mới hòa nhập công việc ngay ngày đầu tiên mà không cần làm phiền đồng nghiệp.
+            </p>
+            <ul class="pricing-features">
+              <li><span class="check">✓</span> Tra cứu quy trình Onboarding, xin nghỉ phép, thanh toán tức thì</li>
+              <li><span class="check">✓</span> Đóng gói tri thức nhân sự cũ trước khi bàn giao công việc</li>
+              <li><span class="check">✓</span> Phân quyền riêng cho Phòng Kế toán, HR và R&D</li>
+            </ul>
+          </div>
+          <div class="usecase-scenario">
+            <div style="padding:24px; background:var(--clr-obsidian-light); border-bottom:1px solid var(--clr-obsidian-edge); font-family:var(--font-mono); font-size:var(--text-xs); color:var(--clr-dragon-cyan);">
+              SME_ORGANIZATION_MEMORY.JSON
+            </div>
+            <div style="padding:24px; font-size:var(--text-sm); color:var(--text-secondary); line-height:1.8;">
+              <strong style="color:var(--text-primary);">Tài liệu đầu vào:</strong> SOPs, Hợp đồng mẫu, Hướng dẫn sản phẩm<br>
+              <strong style="color:var(--text-primary);">Thời gian Onboarding:</strong> Giảm từ 2 tuần xuống 2 ngày<br>
+              <strong style="color:var(--text-primary);">Độ chính xác câu trả lời:</strong> 99.4%
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 3: Knowledge Worker -->
+        <div class="usecase-content" data-tab="worker">
+          <div>
+            <span class="badge badge-blue" style="margin-bottom:16px;">LUẬT SƯ, BÁO CÁO VIÊN & NGHIÊN CỨU VIÊN</span>
+            <h3 style="font-family:var(--font-display); font-size:var(--text-xl); font-weight:700; color:var(--text-primary); margin-bottom:16px;">Phân tích Hồ sơ Pháp lý & Báo cáo Thị trường</h3>
+            <p style="color:var(--text-secondary); margin-bottom:24px; line-height:1.8;">
+              Công cụ đắc lực cho các Chuyên gia Phân tích, Luật sư và Tư vấn viên. Đọc hiểu hàng ngàn trang hồ sơ vụ án, báo cáo tài chính và trích xuất điểm mấu chốt siêu tốc.
+            </p>
+            <ul class="pricing-features">
+              <li><span class="check">✓</span> So sánh rủi ro giữa các phiên bản dự thảo hợp đồng</li>
+              <li><span class="check">✓</span> Trích xuất bảng biểu tài liệu từ PDF sang Excel chính xác</li>
+              <li><span class="check">✓</span> Xuất báo cáo tổng hợp kèm trích dẫn pháp lý</li>
+            </ul>
+          </div>
+          <div class="usecase-scenario">
+            <div style="padding:24px; background:var(--clr-obsidian-light); border-bottom:1px solid var(--clr-obsidian-edge); font-family:var(--font-mono); font-size:var(--text-xs); color:var(--clr-dragon-cyan);">
+              LEGAL_ANALYTICS_CASE.JSON
+            </div>
+            <div style="padding:24px; font-size:var(--text-sm); color:var(--text-secondary); line-height:1.8;">
+              <strong style="color:var(--text-primary);">Tài liệu đầu vào:</strong> 85 Hồ sơ pháp lý & Văn bản luật<br>
+              <strong style="color:var(--text-primary);">Tốc độ rà soát rủi ro:</strong> Nhanh gấp 15 lần đọc thủ công<br>
+              <strong style="color:var(--text-primary);">Trích dẫn trang/dòng:</strong> Tự động 100%
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 8: PRICING SECTION -->
+    <section class="section" id="pricing">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div class="section-overline">
+            <span class="badge badge-dragon">Minh bạch & Linh hoạt</span>
+          </div>
+          <h2>Gói Dịch Vụ Phù Hợp Mọi Quy Mô</h2>
+          <p>Tự do nâng cấp khi nhu cầu tài liệu và quy mô đội ngũ phát triển.</p>
+
+          <div style="display:flex; align-items:center; justify-content:center; gap:12px; margin-top:24px;">
+            <span style="font-size:0.9rem; color:var(--text-secondary);">Thanh toán Tháng</span>
+            <label class="switch" style="position:relative; display:inline-block; width:50px; height:26px;">
+              <input type="checkbox" id="pricing-toggle" style="opacity:0; width:0; height:0;">
+              <span style="position:absolute; cursor:pointer; inset:0; background:var(--clr-obsidian-edge); border-radius:26px; transition:0.3s;" class="slider"></span>
+            </label>
+            <span style="font-size:0.9rem; color:var(--clr-dragon-cyan); font-weight:600;">Thanh toán Năm (Tiết kiệm 20%)</span>
+          </div>
+        </div>
+
+        <div class="pricing-grid reveal">
+          <!-- Free Plan -->
+          <div class="pricing-card">
+            <div class="pricing-plan-name">Free Guardian</div>
+            <div class="pricing-desc">Dành cho cá nhân dùng thử và trải nghiệm sức mạnh RAG.</div>
+            <div class="pricing-price">
+              <span class="pricing-price-currency">$</span>
+              <span class="pricing-price-amount" data-monthly="0" data-annual="0">0</span>
+              <span class="pricing-price-period" id="pricing-period-label">/vĩnh viễn</span>
+            </div>
+            <ul class="pricing-features">
+              <li><span class="check">✓</span> 3 Tài liệu (Max 20MB/file)</li>
+              <li><span class="check">✓</span> 50 Câu hỏi/tháng</li>
+              <li><span class="check">✓</span> Trích dẫn nguồn cơ bản</li>
+              <li class="disabled"><span class="check">✗</span> Knowledge Graph</li>
+              <li class="disabled"><span class="check">✗</span> Workspace Team</li>
+            </ul>
+            <a href="#demo" class="btn btn-ghost" style="width:100%;">Dùng Thử Miễn Phí</a>
+          </div>
+
+          <!-- Starter Plan -->
+          <div class="pricing-card">
+            <div class="pricing-plan-name">Starter</div>
+            <div class="pricing-desc">Dành cho Sinh viên, Nghiên cứu sinh & Freelancer.</div>
+            <div class="pricing-price">
+              <span class="pricing-price-currency">$</span>
+              <span class="pricing-price-amount" data-monthly="12" data-annual="9">12</span>
+              <span class="pricing-price-period">/tháng</span>
+            </div>
+            <ul class="pricing-features">
+              <li><span class="check">✓</span> 25 Tài liệu (Max 100MB/file)</li>
+              <li><span class="check">✓</span> 1,000 Câu hỏi/tháng</li>
+              <li><span class="check">✓</span> AI Tutor & Tóm tắt sách</li>
+              <li><span class="check">✓</span> Xuất file PDF/Word</li>
+              <li class="disabled"><span class="check">✗</span> Workspace Team</li>
+            </ul>
+            <a href="#demo" class="btn btn-secondary" style="width:100%;">Đăng Ký Starter</a>
+          </div>
+
+          <!-- Pro Plan (Featured) -->
+          <div class="pricing-card pricing-card--featured">
+            <div class="pricing-tag">PHỔ BIẾN NHẤT</div>
+            <div class="pricing-plan-name" style="color:var(--clr-dragon-cyan);">Pro Guardian</div>
+            <div class="pricing-desc">Dành cho Chuyên gia tri thức, Luật sư, Consultant.</div>
+            <div class="pricing-price">
+              <span class="pricing-price-currency">$</span>
+              <span class="pricing-price-amount" data-monthly="29" data-annual="23">29</span>
+              <span class="pricing-price-period">/tháng</span>
+            </div>
+            <ul class="pricing-features">
+              <li><span class="check">✓</span> 100 Tài liệu (Unlimited size)</li>
+              <li><span class="check">✓</span> Không giới hạn câu hỏi</li>
+              <li><span class="check">✓</span> Knowledge Graph liên kết</li>
+              <li><span class="check">✓</span> So sánh đa tài liệu</li>
+              <li><span class="check">✓</span> Hỗ trợ ưu tiên 24/7</li>
+            </ul>
+            <a href="#demo" class="btn btn-primary" style="width:100%;">Trải Nghiệm Pro</a>
+          </div>
+
+          <!-- Business Plan -->
+          <div class="pricing-card">
+            <div class="pricing-plan-name">Business</div>
+            <div class="pricing-desc">Dành cho Doanh nghiệp SMEs & Đội ngũ phòng ban.</div>
+            <div class="pricing-price">
+              <span class="pricing-price-currency">$</span>
+              <span class="pricing-price-amount" data-monthly="79" data-annual="64">79</span>
+              <span class="pricing-price-period">/tháng</span>
+            </div>
+            <ul class="pricing-features">
+              <li><span class="check">✓</span> 10 Members bao gồm</li>
+              <li><span class="check">✓</span> Workspace Phân quyền RBAC</li>
+              <li><span class="check">✓</span> Tích hợp Slack & MS Teams</li>
+              <li><span class="check">✓</span> Organization Memory</li>
+              <li><span class="check">✓</span> Admin Audit Logs</li>
+            </ul>
+            <a href="#demo" class="btn btn-secondary" style="width:100%;">Đăng Ký Business</a>
+          </div>
+
+          <!-- Enterprise Plan -->
+          <div class="pricing-card">
+            <div class="pricing-plan-name">Enterprise</div>
+            <div class="pricing-desc">Dành cho Trường Đại học & Tập đoàn lớn.</div>
+            <div class="pricing-price">
+              <span class="pricing-price-amount">Custom</span>
+            </div>
+            <ul class="pricing-features">
+              <li><span class="check">✓</span> On-Premise / Air-Gapped Vault</li>
+              <li><span class="check">✓</span> Custom Model (Local Llama)</li>
+              <li><span class="check">✓</span> SLA 99.99% Khả dụng</li>
+              <li><span class="check">✓</span> Cam kết Zero-Data-Training</li>
+              <li><span class="check">✓</span> Đội ngũ Kỹ sư Vân Long Hội hỗ trợ</li>
+            </ul>
+            <a href="#demo" class="btn btn-ghost" style="width:100%;">Liên Hệ Tư Vấn</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 9: TESTIMONIALS SECTION -->
+    <section class="section" id="testimonials" style="background: rgba(15,21,37,0.3);">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div class="section-overline">
+            <span class="badge badge-violet">Đánh giá từ Khách hàng</span>
+          </div>
+          <h2>Nhà Lãnh Đạo & Chuyên Gia Nói Gì?</h2>
+          <p>Khám phá cách DragonDoc AI chuyển đổi hiệu suất làm việc tại các tổ chức hàng đầu.</p>
+        </div>
+
+        <div class="testimonials-grid">
+          <div class="testimonial-card reveal reveal--delay-1">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"DragonDoc AI đã thay đổi hoàn toàn cách phòng Đào tạo trường chúng tôi phản hồi sinh viên. Mọi thắc mắc về quy chế được trả lời chuẩn xác kèm trang trích dẫn ngay lập tức!"</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" style="background:rgba(0,229,255,0.1); color:var(--clr-dragon-cyan);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              </div>
+              <div>
+                <div class="testimonial-name">PGS. TS. Nguyễn Văn Nam</div>
+                <div class="testimonial-role">Trưởng phòng Đào tạo Đại học</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card reveal reveal--delay-2">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Tính năng so sánh hợp đồng và trích dẫn dòng giúp đội ngũ Luật sư của chúng tôi giảm 70% thời gian rà soát hồ sơ. Độ chính xác và bảo mật của Vân Long Hội thật tuyệt vời."</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" style="background:rgba(124,58,237,0.1); color:#A78BFA;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M3 9l9-6 9 6M3 9h18M5 9l-2 8h6l-2-8M15 9l-2 8h6l-2-8"/></svg>
+              </div>
+              <div>
+                <div class="testimonial-name">ThS. Trần Thị Mai Hương</div>
+                <div class="testimonial-role">Managing Partner, VJL Legal</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card reveal reveal--delay-3">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-quote">"Nhân viên mới của công ty tôi onboarding chỉ mất 2 ngày thay vì 2 tuần như trước nhờ có kho trí tuệ DragonDoc AI. Không còn ai hỏi lặp đi lặp lại các câu hỏi cũ."</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" style="background:rgba(0,112,243,0.1); color:#60A5FA;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+              </div>
+              <div>
+                <div class="testimonial-name">Lê Hoàng Khoa</div>
+                <div class="testimonial-role">CEO & Founder, TechFlow Global</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 10: FAQ SECTION -->
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div class="section-overline">
+            <span class="badge badge-dragon">Giải đáp Thắc mắc</span>
+          </div>
+          <h2>Câu Hỏi Thường Gặp (FAQ)</h2>
+          <p>Mọi thông tin bạn cần biết về độ an toàn, bảo mật và khả năng tích hợp của DragonDoc AI.</p>
+        </div>
+
+        <div class="faq-list reveal">
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>DragonDoc AI có sử dụng tài liệu của tôi để huấn luyện AI không?</span>
+              <div class="faq-icon">+</div>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <strong>Tuyệt đối KHÔNG.</strong> DragonDoc AI hoạt động dưới triết lý "Guardian". Dữ liệu của bạn được lưu trữ trong môi trường kho mã hóa riêng biệt (Air-gapped Vault), cách ly hoàn toàn và cam kết Zero-Data-Training theo tiêu chuẩn GDPR & HIPAA.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Làm sao để đảm bảo AI không bị "ảo giác" (Hallucination)?</span>
+              <div class="faq-icon">+</div>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                DragonDoc AI áp dụng công nghệ <strong>Strict Grounded RAG</strong> với lớp Cohere Rerank v3. Nếu thông tin không có trong tài liệu của bạn, hệ thống sẽ trung thực phản hồi "Không tìm thấy dữ liệu trong tài liệu gốc" thay vì tự bịa câu trả lời.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>DragonDoc AI hỗ trợ những định dạng file nào?</span>
+              <div class="faq-icon">+</div>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Hệ thống hỗ trợ PDF (kể cả PDF dạng ảnh quét OCR), DOCX, PPTX, TXT, MD, CSV và khả năng sync trực tiếp từ Google Drive, Notion, OneDrive và Thư viện số Đại học.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Trường đại học hoặc Doanh nghiệp có thể triển khai On-Premise không?</span>
+              <div class="faq-icon">+</div>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Có. Với gói <strong>Enterprise Guardian</strong>, đội ngũ Vân Long Hội sẽ hỗ trợ triển khai toàn bộ hệ thống lên Server riêng của tổ chức (Private Cloud hoặc Local Hardware) với mô hình Llama 3 mã nguồn mở cách ly hoàn toàn với internet.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 11: FINAL CTA SECTION -->
+    <section class="section cta-section" id="final-cta">
+      <div class="cta-glow"></div>
+      <div class="container relative z-10">
+        <div class="reveal">
+          <span class="badge badge-dragon" style="margin-bottom:20px;">VÂN LONG HỘI PRESENTS</span>
+          <h2 class="cta-h2">Sẵn sàng Đánh thức Tri Thức<br><span class="text-gradient">Đang Ngủ Yên Trong Doanh Nghiệp?</span></h2>
+          <p class="cta-sub">Gia nhập hàng trăm trường đại học và tổ chức đang sử dụng DragonDoc AI để bảo vệ và kích hoạt nguồn tài sản trí tuệ vô giá ngay hôm nay.</p>
+
+          <div class="hero-cta-group">
+            <a href="#pricing" class="btn btn-primary btn--lg" id="final-cta-btn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <span>Khởi tạo Workspace Ngay</span>
+            </a>
+            <a href="#demo" class="btn btn-secondary btn--lg">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              <span>Xem Demo Trực tiếp</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="nav-logo">
+            <div class="nav-logo-icon">
+              <img src="assets/logo.jpg" alt="DragonDoc AI Logo" class="nav-logo-img">
+            </div>
+            <div class="nav-logo-text">DRAGONDOC <span>AI</span></div>
+          </a>
+          <p>Your Intelligent Knowledge Guardian. Biến tài liệu tĩnh thành trí tuệ sống với công nghệ AI bảo mật cao cấp từ Vân Long Hội.</p>
+        </div>
+
+        <div>
+          <div class="footer-col-title">SẢN PHẨM</div>
+          <ul class="footer-links">
+            <li><a href="#features">Tính năng RAG</a></li>
+            <li><a href="#architecture">Kiến trúc AI</a></li>
+            <li><a href="#pricing">Bảng giá Services</a></li>
+            <li><a href="#demo">Demo Workspace</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">ỨNG DỤNG</div>
+          <ul class="footer-links">
+            <li><a href="#use-cases">Trường Đại học</a></li>
+            <li><a href="#use-cases">Doanh nghiệp SMEs</a></li>
+            <li><a href="#use-cases">Luật sư & Chuyên gia</a></li>
+            <li><a href="#use-cases">Nghiên cứu Khoa học</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">VÂN LONG HỘI</div>
+          <ul class="footer-links">
+            <li><a href="#">Về Vân Long Hội (雲龍會)</a></li>
+            <li><a href="#">Hệ sinh thái AI</a></li>
+            <li><a href="#">Bảo mật & Quyền riêng tư</a></li>
+            <li><a href="#">Liên hệ Hợp tác</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-copyright">
+          © 2026 DragonDoc AI — Member of Vân Long Hội (雲龍會) Ecosystem. All rights reserved.
+        </div>
+        <div class="footer-dragon-mark">
+          <span>Protected by White Electric Dragon Architecture</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/particles.js"></script>
+  <script src="js/demo.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
