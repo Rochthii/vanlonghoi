@@ -1572,19 +1572,26 @@ input:checked + .slider::before {
   .demo-sidebar {
     border-right: none !important;
     border-bottom: 1px solid rgba(0,229,255,0.06) !important;
-    display: flex !important;
-    overflow-x: auto !important;
-    gap: var(--space-2) !important;
-    padding: var(--space-3) !important;
-    scrollbar-width: none; /* Hide scrollbar for clean UI */
-  }
-
-  .demo-sidebar::-webkit-scrollbar {
-    display: none;
+    padding: var(--space-2) !important;
+    background: rgba(6,8,16,0.3) !important;
   }
 
   .demo-sidebar-title {
     display: none !important;
+  }
+
+  #demo-doc-list {
+    display: flex !important;
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    gap: var(--space-2) !important;
+    scrollbar-width: none; /* Hide scrollbar for clean UI */
+    width: 100% !important;
+    padding: 2px 0 !important;
+  }
+
+  #demo-doc-list::-webkit-scrollbar {
+    display: none;
   }
 
   .demo-doc-item {
@@ -1592,12 +1599,12 @@ input:checked + .slider::before {
     flex-shrink: 0 !important;
   }
 
-  .demo-sidebar div:last-child {
+  .demo-sidebar-footer {
     display: none !important; /* Hide private vault info on mobile */
   }
 
   .demo-chat {
-    max-height: 300px !important;
+    max-height: 320px !important;
     padding: var(--space-3) !important;
   }
 
