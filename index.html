@@ -349,7 +349,7 @@
     </section>
 
     <!-- SECTION 6: AI ARCHITECTURE SECTION -->
-    <section class="section" id="architecture" style="background: rgba(6,8,16,0.8);">
+    <section class="section" id="architecture" style="background: rgba(6,8,16,0.8); block-size: auto;">
       <div class="container">
         <div class="section-heading reveal">
           <div class="section-overline">
@@ -363,29 +363,29 @@
           <div class="arch-layer-label">CLIENT LAYER & SECURITY GATEWAY</div>
           <div class="arch-layer">
             <div class="arch-node arch-node--frontend">Next.js 14 Frontend</div>
-            <div class="arch-node arch-node--frontend">Clerk / Auth0 OAuth2</div>
+            <div class="arch-node arch-node--frontend">Supabase Auth Security</div>
             <div class="arch-node arch-node--frontend">Cloudflare WAF</div>
           </div>
 
           <div class="arch-layer-label">APPLICATION & INGESTION PIPELINE</div>
           <div class="arch-layer">
-            <div class="arch-node arch-node--backend">FastAPI Backend Engine</div>
-            <div class="arch-node arch-node--backend">Unstructured Parser (PDF/DOCX)</div>
-            <div class="arch-node arch-node--backend">Celery Task Queue</div>
+            <div class="arch-node arch-node--backend">Next.js API Routes / Edge Functions</div>
+            <div class="arch-node arch-node--backend">Custom Regulatory Regex Parser</div>
+            <div class="arch-node arch-node--backend">Supabase Document Storage</div>
           </div>
 
           <div class="arch-layer-label">HYBRID RETRIEVAL & VECTOR DATABASE</div>
           <div class="arch-layer">
-            <div class="arch-node arch-node--storage">Qdrant / Milvus Vector Store</div>
-            <div class="arch-node arch-node--storage">Neo4j Legal Knowledge Graph</div>
-            <div class="arch-node arch-node--storage">PostgreSQL Metadata</div>
+            <div class="arch-node arch-node--storage">Supabase (Postgres + pgvector)</div>
+            <div class="arch-node arch-node--storage">MinIO Encrypted Vault</div>
+            <div class="arch-node arch-node--storage">Legal Metadata Index</div>
           </div>
 
           <div class="arch-layer-label">INTELLIGENCE & REASONING LAYER</div>
           <div class="arch-layer">
-            <div class="arch-node arch-node--ai">Claude 3.5 / GPT-4o API</div>
-            <div class="arch-node arch-node--ai">Air-Gapped Local Llama 3 (Enterprise)</div>
-            <div class="arch-node arch-node--ai">Cohere Rerank v3</div>
+            <div class="arch-node arch-node--ai">Claude API (Sonnet)</div>
+            <div class="arch-node arch-node--ai">Voyage / OpenAI Embeddings</div>
+            <div class="arch-node arch-node--ai">Private Local LLM Option (Enterprise)</div>
           </div>
         </div>
       </div>
