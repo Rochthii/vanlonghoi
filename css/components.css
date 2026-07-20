@@ -1484,10 +1484,14 @@ input:checked + .slider::before {
 .section-heading h2 {
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: clamp(var(--text-2xl), 4vw, var(--text-3xl));
+  font-size: clamp(var(--text-xl), 3.5vw, var(--text-3xl));
   letter-spacing: -0.03em;
   color: var(--text-primary);
   margin-bottom: var(--space-5);
+  text-wrap: balance;
+  max-width: 850px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .section-heading p {
