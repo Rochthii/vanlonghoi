@@ -135,12 +135,12 @@ document.addEventListener('DOMContentLoaded', () => {
     pricingToggle.addEventListener('change', () => {
       const isAnnual = pricingToggle.checked;
       document.querySelectorAll('[data-monthly]').forEach(el => {
-        const monthly = parseFloat(el.dataset.monthly);
-        const annual = parseFloat(el.dataset.annual);
+        const monthly = el.dataset.monthly;
+        const annual = el.dataset.annual;
         el.textContent = isAnnual ? annual : monthly;
       });
       const label = document.getElementById('pricing-period-label');
-      if (label) label.textContent = isAnnual ? '/mo (billed annually)' : '/month';
+      if (label) label.textContent = isAnnual ? '/tháng (thanh toán năm)' : '/tháng';
     });
   }
 
