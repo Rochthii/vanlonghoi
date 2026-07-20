@@ -27,7 +27,7 @@
     <div class="container nav-inner">
       <a href="#" class="nav-logo" id="nav-brand-logo">
         <div class="nav-logo-icon">
-          <img src="assets/logo.jpg" alt="DragonDoc AI Logo" class="nav-logo-img">
+          <img src="assets/logo.png" alt="DragonDoc AI Logo" class="nav-logo-img">
         </div>
         <div class="nav-logo-text">DRAGONDOC <span>AI</span></div>
       </a>
@@ -76,35 +76,56 @@
       </div>
 
       <div class="container hero-content">
-        <div class="hero-kicker">
-          <div class="hero-kicker-line"></div>
-          <span class="badge badge-dragon">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:4px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            Next-Gen Knowledge Guardian
-          </span>
-          <div class="hero-kicker-line"></div>
+        <div class="hero-layout">
+          <div class="hero-text-side">
+            <div class="hero-kicker">
+              <div class="hero-kicker-line"></div>
+              <span class="badge badge-dragon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:4px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                Next-Gen Knowledge Guardian
+              </span>
+              <div class="hero-kicker-line"></div>
+            </div>
+
+            <h1 class="hero-h1">
+              Biến hàng ngàn trang tài liệu tĩnh
+              <span class="line-accent">thành Trí Tuệ Sống tức thì</span>
+            </h1>
+
+            <p class="hero-sub">
+              <strong>DragonDoc AI</strong> bảo vệ và kích hoạt tri thức doanh nghiệp. Hỏi đáp, tổng hợp, trích dẫn nguồn chính xác từng dòng từ <span id="hero-typing" style="color:var(--clr-dragon-cyan); font-weight:600;"></span><span class="typing-cursor"></span>
+            </p>
+
+            <div class="hero-cta-group">
+              <a href="#demo" class="btn btn-primary btn--lg" id="hero-primary-cta">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                <span>Thử nghiệm Demo Tức thì</span>
+              </a>
+              <a href="#architecture" class="btn btn-secondary btn--lg" id="hero-secondary-cta">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <span>Khám phá Bảo mật RAG</span>
+              </a>
+            </div>
+            <div class="hero-cta-note">✓ Không cần thẻ tín dụng &nbsp;•&nbsp; ✓ Mã hóa End-to-End Enterprise &nbsp;•&nbsp; ✓ Trích dẫn chính xác 100%</div>
+          </div>
+
+          <div class="hero-visual-side">
+            <div class="hologram-container">
+              <div class="hologram-glow"></div>
+              <div class="hologram-grid-overlay"></div>
+              <div class="hologram-orbit hologram-orbit--outer"></div>
+              <div class="hologram-orbit hologram-orbit--inner"></div>
+              <div class="hologram-core">
+                <img src="assets/logo.png" alt="DragonDoc AI Large" class="hologram-logo">
+              </div>
+              <div class="hologram-scanner-line"></div>
+              <div class="hologram-badge">
+                <div class="hologram-badge-dot"></div>
+                <span>DragonDoc Core AI v1.0</span>
+              </div>
+            </div>
+          </div>
         </div>
-
-        <h1 class="hero-h1">
-          Biến hàng ngàn trang tài liệu tĩnh
-          <span class="line-accent">thành Trí Tuệ Sống tức thì</span>
-        </h1>
-
-        <p class="hero-sub">
-          <strong>DragonDoc AI</strong> bảo vệ và kích hoạt tri thức doanh nghiệp. Hỏi đáp, tổng hợp, trích dẫn nguồn chính xác từng dòng từ <span id="hero-typing" style="color:var(--clr-dragon-cyan); font-weight:600;"></span><span class="typing-cursor"></span>
-        </p>
-
-        <div class="hero-cta-group">
-          <a href="#demo" class="btn btn-primary btn--lg" id="hero-primary-cta">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            <span>Thử nghiệm Demo Tức thì</span>
-          </a>
-          <a href="#architecture" class="btn btn-secondary btn--lg" id="hero-secondary-cta">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            <span>Khám phá Bảo mật RAG</span>
-          </a>
-        </div>
-        <div class="hero-cta-note">✓ Không cần thẻ tín dụng &nbsp;•&nbsp; ✓ Mã hóa End-to-End Enterprise &nbsp;•&nbsp; ✓ Trích dẫn chính xác 100%</div>
 
         <!-- Hero Stats -->
         <div class="hero-stats">
@@ -479,9 +500,9 @@
 
           <div style="display:flex; align-items:center; justify-content:center; gap:12px; margin-top:24px;">
             <span style="font-size:0.9rem; color:var(--text-secondary);">Thanh toán Tháng</span>
-            <label class="switch" style="position:relative; display:inline-block; width:50px; height:26px;">
-              <input type="checkbox" id="pricing-toggle" style="opacity:0; width:0; height:0;">
-              <span style="position:absolute; cursor:pointer; inset:0; background:var(--clr-obsidian-edge); border-radius:26px; transition:0.3s;" class="slider"></span>
+            <label class="switch">
+              <input type="checkbox" id="pricing-toggle">
+              <span class="slider"></span>
             </label>
             <span style="font-size:0.9rem; color:var(--clr-dragon-cyan); font-weight:600;">Thanh toán Năm (Tiết kiệm 20%)</span>
           </div>
@@ -580,6 +601,22 @@
               <li><span class="check">✓</span> Đội ngũ Kỹ sư Vân Long Hội hỗ trợ</li>
             </ul>
             <a href="#demo" class="btn btn-ghost" style="width:100%;">Liên Hệ Tư Vấn</a>
+          </div>
+        </div>
+
+        <!-- Trust-Based Security Guarantee Banner -->
+        <div class="pricing-trust-banner reveal">
+          <div class="pricing-trust-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="pricing-trust-icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span><strong>Zero-Data-Training:</strong> Tài liệu của bạn tuyệt đối không được dùng để huấn luyện mô hình AI công cộng.</span>
+          </div>
+          <div class="pricing-trust-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="pricing-trust-icon"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <span><strong>Bảo mật Vault riêng biệt:</strong> Cách ly hoàn toàn trên nền tảng MinIO, mã hóa dữ liệu đầu cuối.</span>
+          </div>
+          <div class="pricing-trust-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="pricing-trust-icon"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            <span><strong>Trích dẫn Nguồn 100%:</strong> Loại bỏ hoàn toàn ảo giác nhờ tính năng đối chiếu và chỉ rõ số trang, dòng cụ thể.</span>
           </div>
         </div>
       </div>
@@ -736,7 +773,7 @@
         <div class="footer-brand">
           <a href="#" class="nav-logo">
             <div class="nav-logo-icon">
-              <img src="assets/logo.jpg" alt="DragonDoc AI Logo" class="nav-logo-img">
+              <img src="assets/logo.png" alt="DragonDoc AI Logo" class="nav-logo-img">
             </div>
             <div class="nav-logo-text">DRAGONDOC <span>AI</span></div>
           </a>

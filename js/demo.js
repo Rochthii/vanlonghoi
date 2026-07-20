@@ -130,7 +130,7 @@ class DragonDocDemo {
 
     msg.innerHTML = `
       <div class="chat-avatar chat-avatar--ai">
-        <img src="assets/logo.jpg" alt="DragonDoc AI" class="chat-avatar-img">
+        <img src="assets/logo.png" alt="DragonDoc AI" class="chat-avatar-img">
       </div>
       <div class="chat-bubble chat-bubble--ai">
         <span id="typing-${Date.now()}"></span>
