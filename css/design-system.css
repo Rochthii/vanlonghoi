@@ -307,7 +307,7 @@ img, video {
   font-size: var(--text-base);
   font-weight: 600;
   cursor: pointer;
-  border: none;
+  border: 1px solid transparent;
   transition: var(--transition-base);
   letter-spacing: 0.01em;
   white-space: nowrap;
@@ -343,7 +343,7 @@ img, video {
 .btn-secondary {
   background: transparent;
   color: var(--clr-dragon-cyan);
-  border: 1px solid rgba(0,229,255,0.35);
+  border-color: rgba(0,229,255,0.35);
 }
 
 .btn-secondary:hover {
@@ -356,7 +356,7 @@ img, video {
 .btn-ghost {
   background: transparent;
   color: var(--text-secondary);
-  border: 1px solid var(--clr-obsidian-edge);
+  border-color: var(--clr-obsidian-edge);
 }
 
 .btn-ghost:hover {
