@@ -210,11 +210,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const heroTypingEl = document.getElementById('hero-typing');
   if (heroTypingEl) {
     const phrases = [
-      'Chính sách học vụ',
-      'Quy trình nội bộ',
-      'Nghiên cứu khoa học',
-      'Hợp đồng pháp lý',
-      'Tài liệu dự án',
+      'Luật AI 134/2025/QH15',
+      'Nghị định 142/2026/NĐ-CP',
+      'Nghị định 13 Bảo vệ DLCN',
+      'Bộ Luật Lao Động 2025',
+      'Quy chế Compliance Nội bộ',
     ];
     let phraseIdx = 0;
     let charIdx = 0;

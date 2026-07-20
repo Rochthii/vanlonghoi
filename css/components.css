@@ -291,27 +291,27 @@
 }
 
 .hologram-orbit--outer {
-  width: 300px;
-  height: 300px;
+  width: 380px;
+  height: 380px;
   border-style: double;
   animation: spin 20s linear infinite;
 }
 
 .hologram-orbit--inner {
-  width: 260px;
-  height: 260px;
+  width: 320px;
+  height: 320px;
   border-style: dashed;
   animation: spin 15s linear infinite reverse;
 }
 
 .hologram-core {
   position: relative;
-  width: 180px;
-  height: 180px;
+  width: 220px;
+  height: 220px;
   border-radius: 50%;
   background: rgba(11, 15, 26, 0.7);
-  border: 2px solid rgba(0, 229, 255, 0.4);
-  box-shadow: 0 0 35px rgba(0, 229, 255, 0.25), inset 0 0 25px rgba(0, 229, 255, 0.2);
+  border: 2px solid rgba(0, 229, 255, 0.6);
+  box-shadow: 0 0 50px rgba(0, 229, 255, 0.4), inset 0 0 35px rgba(0, 229, 255, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -320,16 +320,17 @@
 }
 
 .hologram-core:hover {
-  border-color: rgba(0, 229, 255, 0.8);
-  box-shadow: 0 0 45px rgba(0, 229, 255, 0.45), inset 0 0 30px rgba(0, 229, 255, 0.3);
+  border-color: rgba(0, 229, 255, 1);
+  box-shadow: 0 0 70px rgba(0, 229, 255, 0.6), inset 0 0 50px rgba(0, 229, 255, 0.5);
+  transform: scale(1.05);
 }
 
 .hologram-logo {
-  width: 80%;
-  height: 80%;
+  width: 85%;
+  height: 85%;
   object-fit: contain;
-  filter: drop-shadow(0 0 10px rgba(0, 229, 255, 0.7));
-  animation: dragonPulse 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 15px rgba(0, 229, 255, 0.9)) drop-shadow(0 0 30px rgba(0, 229, 255, 0.4));
+  animation: dragonPulse 3s ease-in-out infinite;
 }
 
 .hologram-scanner-line {
