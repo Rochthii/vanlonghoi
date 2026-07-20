@@ -83,8 +83,9 @@ Mọi quyết định kỹ thuật bên dưới phục vụ 2 yêu cầu này tr
     "con_hieu_luc": true
   }
   ```
-- Việc bóc tách Điều/Khoản từ PDF cần **parser tùy chỉnh theo regex** (nhận diện pattern "Điều X.", "Khoản Y." trong văn bản luật Việt Nam có cấu trúc khá nhất quán) — đây là phần cần đầu tư kỹ nhất, không giao hoàn toàn cho AI tự động OCR/parse mà không kiểm tra thủ công batch đầu.
-- Sau khi parse tự động, **review thủ công 100%** của 10 văn bản đầu tiên trước khi đưa vào production — sai 1 Điều ở đây có thể gây hậu quả pháp lý cho khách hàng.
+- Việc bóc tách Điều/Khoản từ PDF cần **parser tùy chỉnh theo regex** (nhận diện pattern "Điều X.", "Khoản Y." trong văn bản luật Việt Nam có cấu trúc khá nhất quán) — đây là phần cần đầu tư kỹ nhất.
+  - **Hệ thống cảnh báo lỗi Parser:** Parser phải được lập trình để phát hiện và cảnh báo các điểm bất thường như mất tính liên tục của số thứ tự (ví dụ: phát hiện Điều 3 rồi nhảy sang Điều 5 mà không thấy Điều 4).
+- Sau khi parse tự động, **cần nạp vào màn hình duyệt Admin UI**: Admin/Editor kiểm tra trực quan cấu trúc đã bóc tách, chỉnh sửa thủ công nếu có lỗi định dạng PDF, và bấm "Approve" duyệt trước khi nạp vector vào Database. Bắt buộc review 100% của 10 văn bản đầu tiên trước khi đưa vào production — sai 1 Điều ở đây có thể gây hậu quả pháp lý nghiêm trọng cho khách hàng.
 
 ### 4.3 Embedding & lưu trữ
 - Dùng embedding model của Voyage AI hoặc OpenAI text-embedding-3 (Claude API hiện chưa có embedding riêng — cần chọn 1 nhà cung cấp embedding ngoài).
@@ -93,11 +94,20 @@ Mọi quyết định kỹ thuật bên dưới phục vụ 2 yêu cầu này tr
 ### 4.4 Truy vấn (Retrieval)
 Pipeline mỗi câu hỏi:
 1. Embed câu hỏi người dùng.
-2. Similarity search lấy top 15-20 chunks liên quan (pgvector cosine distance).
+2. Similarity search lấy top 5-8 chunks liên quan nhất (pgvector cosine distance) — giới hạn thấp thay vì 15-20 chunks để kiểm soát chi phí token đầu vào.
 3. Lọc bỏ chunks có `con_hieu_luc: false` trừ khi người dùng hỏi về lịch sử.
 4. Đưa các chunks còn lại (kèm đầy đủ metadata) vào context của Claude.
 
-### 4.5 System prompt bắt buộc (chống ảo giác)
+### 4.5 Phương án Thay thế tối ưu cho MVP: Không dùng Retrieval (Full-Text Prompt Caching)
+* **Bối cảnh:** Quy mô ban đầu của hệ thống chỉ có ~10 văn bản luật (~150k - 200k tokens).
+* **Giải pháp:** Thay vì xây dựng hệ thống embedding và similarity search phức tạp ngay từ đầu, nạp **toàn bộ văn bản** trực tiếp vào system context và kích hoạt tính năng **Prompt Caching** của Claude Sonnet.
+* **Lợi ích:**
+  * Bỏ qua hoàn toàn việc code embedding pipeline, setup pgvector ở tuần 1-2.
+  * Claude đọc hiểu được toàn văn bản gốc cùng lúc, loại bỏ 100% rủi ro do thuật toán retrieval tìm thiếu hoặc lệch thông tin.
+  * Chi phí cache-read của Claude Sonnet cực rẻ ($0.30/triệu tokens), rẻ hơn nhiều so với việc gọi embeddings và truy vấn liên tục.
+  * Chỉ khi kho văn bản tăng lên (vượt quá giới hạn context window 200k tokens), ta mới chuyển sang cơ chế RAG lai ở Giai đoạn 2.
+
+### 4.6 System prompt bắt buộc (chống ảo giác)
 Nguyên tắc cứng cho system prompt:
 - Chỉ được trả lời dựa trên các đoạn văn bản được cung cấp trong context.
 - Mọi khẳng định pháp lý phải đi kèm chú thích (Văn bản – Điều – Khoản).
@@ -111,7 +121,7 @@ Nguyên tắc cứng cho system prompt:
 | Bảng | Trường chính | Ghi chú |
 |---|---|---|
 | `documents` | id, ten_van_ban, so_hieu, ngay_ban_hanh, hieu_luc_tu, con_hieu_luc, file_url | 1 row / văn bản luật |
-| `chunks` | id, document_id, dieu, khoan, diem, trang, noi_dung, embedding (vector) | 1 row / đơn vị Điều-Khoản |
+| `chunks` | id, document_id, dieu, khoan, diem, trang, noi_dung, embedding (vector), **replaced_by_chunk_id** | 1 row / đơn vị Điều-Khoản. Cột `replaced_by_chunk_id` liên kết thủ công tới Điều/Khoản mới thay thế (đóng vai trò là Sơ đồ liên kết/Knowledge Graph rút gọn cho MVP) |
 | `users` | id, email, ho_ten, plan, stripe_customer_id | Quản lý bởi Supabase Auth |
 | `conversations` | id, user_id, created_at | 1 row / phiên chat |
 | `messages` | id, conversation_id, role, content, citations (jsonb) | Lưu cả câu trả lời + trích dẫn đã dùng, để audit sau này |
@@ -164,6 +174,12 @@ Dù chưa cần Air-Gapped Vault ngay, vẫn phải có từ ngày đầu:
 
 ## 10. Rủi ro kỹ thuật cần lường trước
 
-- **Parser Điều/Khoản lỗi ở văn bản có cấu trúc không chuẩn** (văn bản cũ scan ảnh, format khác nhau giữa các loại văn bản) → cần fallback: đánh dấu "cần review thủ công" thay vì đẩy thẳng vào production.
+- **Parser Điều/Khoản lỗi ở văn bản có cấu trúc không chuẩn** (văn bản cũ scan ảnh, format khác nhau giữa các loại văn bản) → cần fallback: đánh dấu "cần review thủ công" và hiển thị rõ trên Admin UI trước khi cho phép Approve nạp vào database.
 - **Văn bản hết hiệu lực nhưng chưa cập nhật `con_hieu_luc: false`** → quy trình vận hành: mỗi tuần kiểm tra thủ công các văn bản mới/sửa đổi liên quan, chưa tự động hóa ở MVP.
-- **Chi phí Claude API tăng khi scale** → theo dõi cost/query ngay từ đầu, đưa vào bài toán định giá gói.
+- **Chi phí Claude API làm lỗ nặng gói Starter**: 
+  * *Rủi ro:* Nếu 1 user dùng hết 1.000 queries/tháng, với chi phí 450đ–750đ/query (do nhồi 15-20 chunks context), tổng chi phí API sẽ là 450.000đ - 750.000đ. Con số này vượt xa doanh thu gói Starter (290.000đ/tháng), gây lỗ ngay từ tháng đầu tiên.
+  * *Khắc phục:* 
+    1. Giảm hạn mức của gói **Legal Starter** xuống còn **250 queries/tháng**.
+    2. Giới hạn số lượng context truyền vào LLM xuống chỉ còn **top 5-8 chunks liên quan nhất** thay vì 15-20 chunks.
+    3. Bắt buộc triển khai **Prompt Caching** ngay ở bản MVP để đưa chi phí trung bình mỗi query xuống dưới 150đ.
+    4. Cân nhắc cấu hình phương án nạp toàn bộ corpus vào Prompt Cache thay vì RAG để tối ưu chi phí và nâng cao độ chính xác ở quy mô nhỏ.
